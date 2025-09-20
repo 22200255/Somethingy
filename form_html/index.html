@@ -65,12 +65,12 @@
             const itemList = document.getElementById('itemList');
             
             addButton.onclick = function() {
-                const inputText = itemInput.value; // 입력된 전체 텍스트
+                const inputText = itemInput.value; 
                 
                 const items = inputText.split(',');
                 
                 items.forEach(function(item) {
-                    // 각 항목의 앞뒤 공백을 제거합니다.
+                    
                     const trimmedItem = item.trim();
                     
                     if (trimmedItem !== '') {
