@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web page</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        #container {
+            max-width: 500px;
+            margin: auto;
+        }
+        #itemInput {
+            width: 300px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 8px 15px;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #addButton {
+            background-color: #0000ff; 
+        }
+        #deleteButton {
+            background-color: #556b2f; 
+        }
+        #itemList {
+            list-style-type: disc; 
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+        #itemList li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Dynamic Web page</h1>
+        
+        <div>
+            <input type="text" id="itemInput" placeholder="ex) apple, banana, kiwi">
+            <button id="addButton">추가</button>
+            <button id="deleteButton">삭제</button>
+        </div>
+        
+        <ul id="itemList">
+            </ul>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const itemInput = document.getElementById('itemInput');
+            const addButton = document.getElementById('addButton');
+            const deleteButton = document.getElementById('deleteButton');
+            const itemList = document.getElementById('itemList');
+            
+            addButton.onclick = function() {
+                const inputText = itemInput.value; // 입력된 전체 텍스트
+                
+                const items = inputText.split(',');
+                
+                items.forEach(function(item) {
+                    // 각 항목의 앞뒤 공백을 제거합니다.
+                    const trimmedItem = item.trim();
+                    
+                    if (trimmedItem !== '') {
+                        const newListItem = document.createElement('li');
+                        newListItem.textContent = trimmedItem;
+                        itemList.appendChild(newListItem);
+                    }
+                });
+                
+                itemInput.value = '';
+                itemInput.focus();
+            };
+            
+            deleteButton.onclick = function() {
+                itemList.innerHTML = '';
+            };
+        };
+    </script>
+
+</body>
+</html>

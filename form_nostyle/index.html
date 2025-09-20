@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_nostyle</title>
+</head>
+
+<body>
+    <h1>Checkout form</h1>
+    <p>
+        Below is an example form built entirely with Bootstrap's form controls. Each
+        required form group has a validation state that can be triggered by attempting to submit the form without completing it.
+    </p>
+
+    <hr>
+    <div>
+        <h2>
+            Your cart 
+            <span>(3)</span>
+        </h2>
+        <ul>
+            <li><div><strong>Product name</strong><br><small>Brief description</small></div><span>$12</span></li>
+            <li><div><strong>Second product</strong><br><small>Brief description</small></div><span>$8</span></li>
+            <li><div><strong>Third item</strong><br><small>Brief description</small></div><span>$5</span></li>
+            <li><div><strong>Promo code</strong><br><small>EXAMPLECODE</small></div><span>-$5</span></li>
+            <li><strong>Total (USD)</strong><strong>$20</strong></li>
+        </ul>
+        <form>
+            <label for="promo">Promo code</label><br>
+            <input type="text" id="promo" placeholder="Promo code">
+            <button type="button">Redeem</button>
+        </form>
+    </div>
+    <hr>
+
+    <div>
+        <h2>Billing address</h2>
+        
+        <form action="/checkout" method="post">
+            <label for="firstName">First name</label><br>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">Last name</label><br>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+
+            <label for="email">Email (Optional)</label><br>
+            <input type="email" id="email" name="email" placeholder="you@example.com"><br><br>
+
+            <label for="address">Address</label><br>
+            <textarea id="address" name="address" placeholder="1234 Main St" rows="3" required></textarea><br><br>
+
+            <label for="address2">Address 2 (Optional)</label><br>
+            <input type="text" id="address2" name="address2" placeholder="Apartment or suite"><br><br>
+
+            <label for="country">Country</label><br>
+            <select id="country" name="country" required>
+                <option value="">Choose...</option>
+                <option value="US">United States</option>
+            </select><br><br>
+
+            <label for="state">State</label><br>
+            <select id="state" name="state" required>
+                <option value="">Choose...</option>
+                <option value="CA">California</option>
+            </select><br><br>
+
+            <label for="zip">Zip</label><br>
+            <input type="text" id="zip" name="zip" required><br><br>
+
+            <hr>
+
+            <input type="checkbox" id="same-address" name="same_address">
+            <label for="same-address">Shipping address is the same as my billing address</label><br><br>
+
+            <input type="checkbox" id="save-info" name="save_info">
+            <label for="save-info">Save this information for next time</label><br><br>
+
+            <hr>
+
+            <h3>Payment</h3>
+            
+            <input type="radio" id="credit" name="paymentMethod" value="credit" checked required>
+            <label for="credit">Credit card</label><br>
+            
+            <input type="radio" id="debit" name="paymentMethod" value="debit" required>
+            <label for="debit">Debit card</label><br>
+            
+            <input type="radio" id="paypal" name="paymentMethod" value="paypal" required>
+            <label for="paypal">PayPal</label><br><br>
+
+            <label for="cc-name">Name on card</label><br>
+            <input type="text" id="cc-name" name="card_name" required><br>
+            <small>Full name as displayed on card</small><br><br>
+
+            <label for="cc-number">Credit card number</label><br>
+            <input type="text" id="cc-number" name="card_number" required><br><br>
+
+            <label for="cc-expiration">Expiration</label><br>
+            <input type="date" id="cc-expiration" name="card_expiration" required><br><br>
+
+            <label for="cc-cvv">CVV</label><br>
+            <input type="text" id="cc-cvv" name="card_cvv" required><br><br>
+
+            <hr>
+
+            <button type="submit">Continue to checkout</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_js</title>
+     <style>
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box; 
+        }
+
+        
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0d6efd;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0b5ed7;
+        }
+        
+        
+        #cart ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        #cart li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+      
+        #cart form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+       
+        #billing-form button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+        }
+        
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #dee2e6;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Checkout form</h1>
+    <p>
+        Below is an example form built entirely with Bootstrap's form controls. Each
+        required form group has a validation state that can be triggered by attempting to submit the form without completing it.
+    </p>
+    <hr>
+    <div id="cart">
+        <h2>
+            Your cart 
+            <span>(3)</span>
+        </h2>
+        <ul>
+            <li><div><strong>Product name</strong><br><small>Brief description</small></div><span>$12</span></li>
+            <li><div><strong>Second product</strong><br><small>Brief description</small></div><span>$8</span></li>
+            <li><div><strong>Third item</strong><br><small>Brief description</small></div><span>$5</span></li>
+            <li><div><strong>Promo code</strong><br><small>EXAMPLECODE</small></div><span>-$5</span></li>
+            <li><strong>Total (USD)</strong><strong>$20</strong></li>
+        </ul>
+        <form>
+            <input type="text" id="promo" placeholder="Promo code">
+            <button type="button">Redeem</button>
+        </form>
+    </div>
+    <hr>
+
+    <form id="billing-form" action="/checkout" method="post" onsubmit="return validateForm()">
+        <h2>Billing address</h2>
+        
+        <label for="firstName">First name</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last name</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="username">Username</label><br>
+        <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+
+        <label for="email">Email (Optional)</label><br>
+        <input type="email" id="email" name="email" placeholder="you@example.com"><br><br>
+
+        <label for="address">Address</label><br>
+        <textarea id="address" name="address" placeholder="1234 Main St" rows="3" required></textarea><br><br>
+
+        <label for="address2">Address 2 (Optional)</label><br>
+        <input type="text" id="address2" name="address2" placeholder="Apartment or suite"><br><br>
+
+        <label for="country">Country</label><br>
+        <select id="country" name="country" required>
+            <option value="">Choose...</option>
+            <option value="US">United States</option>
+        </select><br><br>
+
+        <label for="state">State</label><br>
+        <select id="state" name="state" required>
+            <option value="">Choose...</option>
+            <option value="CA">California</option>
+        </select><br><br>
+
+        <label for="zip">Zip</label><br>
+        <input type="text" id="zip" name="zip" required><br><br>
+
+        <hr>
+
+        <input type="checkbox" id="same-address" name="same_address">
+        <label for="same-address">Shipping address is the same as my billing address</label><br><br>
+
+        <input type="checkbox" id="save-info" name="save_info">
+        <label for="save-info">Save this information for next time</label><br><br>
+
+        <hr>
+
+        <h3>Payment</h3>
+        
+        <input type="radio" id="credit" name="paymentMethod" value="credit" checked required>
+        <label for="credit">Credit card</label><br>
+        <input type="radio" id="debit" name="paymentMethod" value="debit" required>
+        <label for="debit">Debit card</label><br>
+        <input type="radio" id="paypal" name="paymentMethod" value="paypal" required>
+        <label for="paypal">PayPal</label><br><br>
+        <label for="cc-name">Name on card</label><br>
+        <input type="text" id="cc-name" name="card_name" required><br>
+        <small>Full name as displayed on card</small><br><br>
+        <label for="cc-number">Credit card number</label><br>
+        <input type="text" id="cc-number" name="card_number" required><br><br>
+
+        <label for="cc-expiration">Expiration</label><br>
+        <input type="date" id="cc-expiration" name="card_expiration" required><br><br>
+
+        <label for="cc-cvv">CVV</label><br>
+        <input type="text" id="cc-cvv" name="card_cvv" required><br><br>
+
+        <hr>
+
+        <button type="submit">Continue to checkout</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const firstNameInput = document.getElementById('firstName');
+            if (firstNameInput.value.trim() === '') {
+                alert('First name을 입력해주세요!');
+                firstNameInput.focus();
+                return false; // 폼 제출 중단
+            }
+
+            const addressInput = document.getElementById('address');
+            if (addressInput.value.trim() === '') {
+                alert('Address를 입력해주세요!');
+                addressInput.focus();
+                return false;
+            }
+
+
+            const ccNumberInput = document.getElementById('cc-number');
+            if (ccNumberInput.value.trim() === '') {
+                alert('신용카드 번호를 입력해주세요!');
+                ccNumberInput.focus();
+                return false;
+            }
+
+      
+            alert('성공적으로 제출되었습니다!');
+            return true; // 폼 제출 허용
+        }
+    </script>
+</body>
+</html>
