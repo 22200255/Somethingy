@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 상세 보기</title>
+    <link rel="stylesheet" href="my.css">
+</head>
+<body>
+    <div class="container">
+        <h1> 단어 상세 정보</h1>
+        
+        <div class="view-details">
+            <p><strong>단어</strong> Responsive</p>
+            <p><strong>의미</strong> 반응형의</p>
+            <p><strong>예문</strong> This website has a responsive design.</p>
+            <p><strong>암기 상태</strong> 암기 완료</p>
+            <p><strong>중요도</strong> ★★★</p>
+            <p><strong>등록일</strong> 2025-10-01</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="edit.html" class="btn btn-warning">[수정]</a>
+            <button class="btn btn-danger" onclick="deleteWord()">[삭제]</button>
+            <a href="index.html" class="btn btn-secondary">[목록]</a>
+        </div>
+    </div>
+
+    <script>
+        function deleteWord() {
+            if (confirm('게시물을 삭제할까요?')) {
+                console.log('삭제가 확인되었습니다.');
+            }
+        }
+    </script>
+</body>
+</html>
