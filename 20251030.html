@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let fruits = ["apple","banana","grape"];
+        
+
+        let fruits2 =[];
+        fruits2[0] = "orange";
+        fruits[2] = "pear";
+
+
+        /*
+        alert(fruits2[0]); // orange
+        alert(fruits2[1]); // undenified
+        alert(fruits2[2]); // pear
+
+        */
+
+        for(let i=0; i<fruits2.length; i++){
+            console.log(fruits2[i]);
+        }
+        for (let each of fruits2){
+            console.log(each);
+        }
+
+        fruits2.push("lemon");
+
+        fruits2.forEach(function(each){
+            console.log(each);
+        });
+
+        function customPuch(pre_array, pre_value){
+            pre_array[pre_array.length] = pre.value;
+        }
+
+
+
+    </script>
+
+</body>
+</html>
